@@ -1,14 +1,14 @@
 import React from 'react';
 import './Layout.css';
 import Navbar from "../../components/Navbar/Navbar";
+import TransactionsModal from "../../containers/Transactions/TransactionsModal";
 
 const Layout = (props) => {
   return (
     <>
-        <div className='Navbar'>
-            <Navbar/>
-        </div>
-      <main className="Content-Layout">{props.children}</main>
+        <Navbar/>
+        <main className="Content-Layout">{props.children}</main>
+        <TransactionsModal/>
     </>
   );
 };

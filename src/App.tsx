@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Layout from './UI/Layout/Layout';
-import {Home} from "@mui/icons-material";
+import Transactions from "./containers/Transactions/Transactions";
 
 
 function App() {
@@ -9,7 +9,9 @@ function App() {
   return (
       <Layout>
         <Routes>
-          <Route path='/'  element={<Home/>}/>
+          <Route path='/'  element={<Transactions/>}/>
+            <Route path='/transactions' element={(<Transactions/>)}/>
+
           {/*<Route path='new-transactions' element={<TransactionsForm/>}/>*/}
           {/*<Route path='/edit/:id' element={<TransactionsForm/>}/>*/}
           {/*<Route path='/categories' element={<Categories/>}/>*/}

@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
 import {Category} from "../type";
 import {RootState} from "../app/store";
-import {fetchCategories} from "./categoriesThunk";
+import {fetchCategories} from "./CategoriesThunk";
 
 interface CategoriesState {
     items: Category[];
@@ -23,7 +23,7 @@ export const CategoriesSlice = createSlice({
             state.fetchLoading = false;
             state.items = categories;
         });
-        builder.addCase(fetchCategories.fulfilled, (state, {payload : categories}) => {
+        builder.addCase(fetchCategories.rejected, (state, {payload : categories}) => {
             state.fetchLoading = false;
         });
     }

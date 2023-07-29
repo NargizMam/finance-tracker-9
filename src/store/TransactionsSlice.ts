@@ -16,10 +16,18 @@ const initialState: TransactionState = {
 export const transactionsSlice = createSlice({
     name: 'transactions',
     initialState,
-    reducers: {}
+    reducers: {
+        openModal: (state) => {
+            state.modalOpen = true;
+        },
+        closeModal: (state) => {
+            state.modalOpen = false;
+        }
+    }
 });
 
 export const transactionsReducers = transactionsSlice.reducer;
+export const {openModal, closeModal} = transactionsSlice.actions;
 export const selectTransactions = (state: RootState) => state.transactions.items;
 export const selectTotal = (state: RootState) => state.transactions.total;
 export const selectModalOpen = (state: RootState) => state.transactions.modalOpen;
