@@ -43,6 +43,7 @@ export const fetchTransactions = createAsyncThunk<FetchTransactionsResult, void,
                     total += transaction.amount
                 }
             });
+            newTransactions.sort((a,b) => a.createdAt > b.createdAt ? -1 : 1);
         return {
             transactions: newTransactions,
             total

@@ -42,6 +42,8 @@ const TransactionsModal = () => {
             amount: parseInt(formState.amount),
             createdAt: dayjs(new Date()).toISOString(),
         }));
+        await dispatch(fetchTransactions());
+        close();
     };
     const onFormFieldChange = async (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
 
@@ -49,8 +51,7 @@ const TransactionsModal = () => {
             ...prev,
             [e.target.name]: e.target.value
         }));
-        await dispatch(fetchTransactions());
-        close();
+
     };
     const displayStyle = {
         display: isOpen ? 'block' : 'none'
@@ -109,7 +110,6 @@ const TransactionsModal = () => {
                             </Form.Group>
                         </Form>
                     </Modal.Body>
-
                     <Modal.Footer>
                         <Button variant="secondary"
                                 onClick={close}>Close</Button>
