@@ -13,7 +13,12 @@ const CategoriesModal = () => {
         type: 'expense',
         name: ''
     });
-
+    const resetForm = () => {
+        setFormState({
+            type: 'expense',
+            name: ''
+        });
+    };
     const close = () => {
         dispatch(closeCategoriesModal())
     };
@@ -33,6 +38,7 @@ const CategoriesModal = () => {
         }));
         await dispatch(fetchCategories());
         close();
+        await resetForm();
     };
     return (
         <>

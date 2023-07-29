@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import Layout from './UI/Layout/Layout';
 import Transactions from "./containers/Transactions/Transactions";
 import Categories from "./containers/Categories/Categories";
-import CategoriesModal from "./containers/Categories/CategoriesModal";
+import TransactionsModal from "./containers/Transactions/TransactionsModal";
 
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/'  element={<Transactions/>}/>
             <Route path='/transactions' element={(<Transactions/>)}/>
+            <Route path='/edit-transactions/:id' element={(<TransactionsModal/>)}/>
           <Route path='/categories' element={<Categories/>}/>
         </Routes>
       </Layout>

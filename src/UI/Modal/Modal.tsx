@@ -8,7 +8,7 @@ interface Props extends React.PropsWithChildren {
     title: string;
     onClose: React.MouseEventHandler;
     loading: boolean;
-    onSubmit: React.MouseEventHandler;
+    onSubmit: React.FormEventHandler;
 }
 
 const ModalWindow: React.FC<Props> = ({
@@ -30,7 +30,7 @@ const ModalWindow: React.FC<Props> = ({
                 <Modal.Dialog>
                     <CloseButton onClick={onClose}/>
                     <Modal.Header>
-                        <Modal.Title>Add transactions</Modal.Title>
+                        <Modal.Title>Х{title}</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         {children}

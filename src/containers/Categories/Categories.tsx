@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../app/hook';
 import {openCategoriesModal, selectCategories} from "../../store/CategoriesSlice";
 import {fetchCategories} from "../../store/CategoriesThunk";
-import {NavLink} from "react-router-dom";
 import {Button, Grid} from '@mui/material';
 import OneCategory from "./OneCategory";
 
@@ -18,7 +17,9 @@ const Categories = () => {
         dispatch(openCategoriesModal());
     };
     const categoryInfo = allCategories.map(category => (
-        <OneCategory category={category}/>
+        <OneCategory category={category}
+                     key={category.id}
+        />
         ));
 
     return (

@@ -18,8 +18,7 @@ const Navbar: React.FC = () => {
           </Typography>
             <Box>
                 <Button component={NavLink} to='/categories' color="inherit">Categories </Button>
-                <Button component={NavLink} to='/new-transactions'
-                        color="inherit"
+                <Button color="inherit"
                         onClick={open}
                 >Add </Button>
             </Box>

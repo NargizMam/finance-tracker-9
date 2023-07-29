@@ -19,8 +19,13 @@ export interface Transaction {
 }
 export interface ApiTransaction {
     categoryId: string;
+    type: string,
     amount: number;
     createdAt: string;
+}
+export interface ApiTransactionInfo extends ApiTransaction{
+    categoryName: string,
+
 }
 export interface ApiTransactionsList {
     [id: string]: ApiTransaction;
