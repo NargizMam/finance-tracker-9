@@ -1,7 +1,8 @@
 import React from 'react';
 import Backdrop from '../Backdrop/Backdrop';
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {isClose, selectShowModal} from "./ModalSlice";
+import {isClose} from "./ModalSlice";
+import {selectModalOpen} from "../../store/TransactionsSlice";
+import {useAppDispatch, useAppSelector} from '../../app/hook';
 
 interface Props extends React.PropsWithChildren {
     title: string;
@@ -9,13 +10,16 @@ interface Props extends React.PropsWithChildren {
 
 const Modal: React.FC<Props> = ({ title, children}) => {
     const dispatch = useAppDispatch();
-    const showModal = useAppSelector(selectShowModal);
+    const isOpen = useAppSelector(selectModalOpen);
+    const displayStyle = {
+        display: isOpen ? 'block' : 'none'
+    }
     return (
         < >
-            <Backdrop show={showModal}/>
+            <Backdrop show={isOpen} />
             <div
                 className="modal show"
-                style={{display: showModal ? 'block' : 'none', padding: 5}}
+                style={displayStyle}
             >
                 <div className="modal-dialog" onClick={e => e.stopPropagation()}>
                     <div className="modal-content">
