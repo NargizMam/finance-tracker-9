@@ -23,10 +23,7 @@ export interface ApiTransaction {
     amount: number;
     createdAt: string;
 }
-export interface ApiTransactionInfo extends ApiTransaction{
-    categoryName: string,
 
-}
 export interface ApiTransactionsList {
     [id: string]: ApiTransaction;
 }

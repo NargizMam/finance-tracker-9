@@ -2,11 +2,21 @@ import React, {useState} from 'react';
 import {Form} from "react-bootstrap";
 import ModalWindow from "../../UI/Modal/Modal";
 import {useAppDispatch, useAppSelector} from "../../app/hook";
-import {closeCategoriesModal, selectCategoriesModal, selectCreateCategoriesLoading} from "../../store/CategoriesSlice";
+import {
+    closeCategoriesModal,
+    selectCategoriesModal,
+    selectCategoriesUpdateLoading,
+    selectCreateCategoriesLoading,
+    selectFetchOneCategory
+} from "../../store/CategoriesSlice";
 import {createCategory, fetchCategories} from "../../store/CategoriesThunk";
+import {useParams} from "react-router-dom";
 
 const CategoriesModal = () => {
     const dispatch = useAppDispatch();
+    const {id} = useParams();
+    const updating = useAppSelector(selectCategoriesUpdateLoading);
+    const categoryInfo = useAppSelector(selectFetchOneCategory);
     const isOpen = useAppSelector(selectCategoriesModal);
     const creating = useAppSelector(selectCreateCategoriesLoading);
     const [formState, setFormState] = useState({
