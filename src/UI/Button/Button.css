@@ -1,0 +1,40 @@
+.Button {
+    background-color: #cccccc;
+    border: none;
+    color: #282c34;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    max-height: 50px;
+    border-radius: 20px;
+    margin: 5px;
+    padding: 5px 20px;
+    box-shadow: 2px 3px #40a4c8;
+}
+.Button:hover{
+    background-color: #40a4c8;
+}
+.Button:active {
+    border: 3px solid #282c34;
+}
+.red {
+    background-color: white;
+    color: #d35a5a;
+    border: 2px solid #D35A5AFF;
+    transition-duration: 0.4s;
+}
+.red:hover {
+    background-color: #D35A5AFF;
+    color: white;
+}
+.grey {
+    background-color: white;
+    color: #565151FF;
+    border: 2px solid #565151FF;
+    transition-duration: 0.4s;
+}
+.grey:hover {
+    background-color: #565151FF;
+    color: white;
+}
