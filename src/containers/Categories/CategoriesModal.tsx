@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Form} from "react-bootstrap";
 import ModalWindow from "../../UI/Modal/Modal";
 import {useAppDispatch, useAppSelector} from "../../app/hook";
@@ -9,12 +9,14 @@ import {
     selectCreateCategoriesLoading,
     selectFetchOneCategory
 } from "../../store/CategoriesSlice";
-import {createCategory, fetchCategories} from "../../store/CategoriesThunk";
-import {useParams} from "react-router-dom";
+import {createCategory, fetchCategories, fetchOneCategory} from "../../store/CategoriesThunk";
+import {useLocation, useParams} from "react-router-dom";
+import {openModal} from "../../store/TransactionsSlice";
 
 const CategoriesModal = () => {
     const dispatch = useAppDispatch();
     const {id} = useParams();
+    const location = useLocation();
     const updating = useAppSelector(selectCategoriesUpdateLoading);
     const categoryInfo = useAppSelector(selectFetchOneCategory);
     const isOpen = useAppSelector(selectCategoriesModal);
@@ -23,6 +25,23 @@ const CategoriesModal = () => {
         type: 'expense',
         name: ''
     });
+    const getCategoryInfo = useCallback(async () => {
+        if(id){
+            await dispatch(fetchOneCategory(id));
+            await dispatch(openModal());
+        }
+    }, [dispatch, id]);
+
+    useEffect(() => {
+        void getCategoryInfo();
+        if(categoryInfo){
+            setFormState({
+                type: categoryInfo.type,
+                name: categoryInfo.name
+            })
+        }
+    }, [getCategoryInfo, categoryInfo, location.pathname]) ;
+
     const resetForm = () => {
         setFormState({
             type: 'expense',
@@ -53,7 +72,7 @@ const CategoriesModal = () => {
     return (
         <>
             <ModalWindow show={isOpen} title='Categories'
-                         onClose={close} loading={creating}
+                         onClose={close} loading={creating || updating}
                          onSubmit={onSubmit}
             >
                 <Form onSubmit={onSubmit}>

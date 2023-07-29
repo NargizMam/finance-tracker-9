@@ -101,7 +101,7 @@ const TransactionsModal = () => {
     const categoriesByType = categories.filter(e => e.type === formState.type);
     return (
         <ModalWindow show={isOpen} title='Add new transaction'
-                     onClose={close} loading={creating ? creating : updating }
+                     onClose={close} loading={creating || updating }
                      onSubmit={onSubmit}
         >
             <Form onSubmit={onSubmit}>
